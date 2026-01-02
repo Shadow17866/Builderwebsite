@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ['python37', 'python37Packages.pip', 'python37Packages.virtualenv']
+nixPkgs = ['python38', 'python38Packages.pip', 'python38Packages.virtualenv']
 
 [phases.install]
 cmds = [
-  'cp FloorPlanTo3D-API-master/requirements.txt .',
+  'cp -r FloorPlanTo3D-API-master/* .',
   'python3 -m venv /opt/venv',
-  '/opt/venv/bin/pip install --upgrade pip',
+  '/opt/venv/bin/pip install --upgrade pip==20.3.4',
   '/opt/venv/bin/pip install -r requirements.txt'
 ]
 
@@ -13,4 +13,4 @@ cmds = [
 cmds = []
 
 [start]
-cmd = 'cd FloorPlanTo3D-API-master && /opt/venv/bin/python application.py'
+cmd = '/opt/venv/bin/python application.py'
