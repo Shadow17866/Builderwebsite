@@ -207,6 +207,12 @@ def turnSubArraysToJson(objectsArr):
 
 
 
+
+# Health check endpoint
+@application.route('/health', methods=['GET'])
+def health():
+	return jsonify({'status': 'ok', 'model_loaded': _model is not None})
+
 @application.route('/',methods=['POST'])
 def prediction():
 	global cfg
