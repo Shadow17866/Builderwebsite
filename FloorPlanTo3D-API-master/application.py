@@ -44,7 +44,6 @@ import requests
 
 
 global _model
-global _graph
 global cfg
 ROOT_DIR = os.path.abspath("./")
 WEIGHTS_FOLDER = "./weights"
@@ -130,7 +129,6 @@ class PredictionConfig(Config):
 def load_model():
 	global cfg
 	global _model
-	global _graph
 	model_folder_path = os.path.abspath("./") + "/mrcnn"
 	
 	# Download weights if not present
@@ -142,7 +140,6 @@ def load_model():
 	_model = MaskRCNN(mode='inference', model_dir=model_folder_path,config=cfg)
 	print('=================after loading model==============')
 	_model.load_weights(weights_path, by_name=True)
-	_graph = tf.get_default_graph()  # Needed for TF 1.15 with Flask threading
 
 
 # Load model immediately
@@ -220,9 +217,7 @@ def prediction():
 	sample = expand_dims(scaled_image, 0)
 
 	global _model
-	global _graph
-	with _graph.as_default():
-		r = _model.detect(sample, verbose=0)[0]
+	r = _model.detect(sample, verbose=0)[0]
 	
 	# Debug: print detection results
 	print(f"Detected {len(r['rois'])} objects")
