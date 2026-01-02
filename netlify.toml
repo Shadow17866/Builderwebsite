@@ -5,7 +5,7 @@
 
 [[redirects]]
   from = "/api"
-  to = "http://13.221.48.195:8080/"
+  to = "http://13.221.48.195:8080"
   status = 200
   force = true
 
