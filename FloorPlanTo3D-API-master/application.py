@@ -69,8 +69,14 @@ def download_weights():
 	os.makedirs(WEIGHTS_FOLDER, exist_ok=True)
 	
 	try:
-		url = f'https://drive.google.com/uc?id={WEIGHTS_GOOGLE_DRIVE_ID}'
-		gdown.download(url, weights_path, quiet=False)
+		# Use direct Google Drive URL with fuzzy matching
+		url = f'https://drive.google.com/file/d/{WEIGHTS_GOOGLE_DRIVE_ID}/view'
+		gdown.download(url, weights_path, quiet=False, fuzzy=True)
+		
+		# Verify file was downloaded and is valid
+		if not os.path.exists(weights_path) or os.path.getsize(weights_path) < 1000000:
+			raise Exception("Download failed or file is too small")
+			
 		print(f"Successfully downloaded weights to {weights_path}")
 		return weights_path
 	except Exception as e:
