@@ -1,7 +1,7 @@
 // API service for FloorPlan to 3D conversion
 
 // Get API URL from environment variable, fallback to AWS backend
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://13.221.48.195:8080';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 export async function convertFloorPlanTo3D(imageFile) {
   const formData = new FormData();
