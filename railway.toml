@@ -2,5 +2,4 @@
 builder = "nixpacks"
 
 [deploy]
-workingDir = "FloorPlanTo3D-API-master"
-startCommand = "python application.py"
+startCommand = "/opt/venv/bin/python application.py"
