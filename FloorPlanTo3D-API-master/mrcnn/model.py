@@ -28,7 +28,7 @@ from tensorflow import keras
 from tensorflow.keras import backend as K
 from tensorflow.keras import layers as KL
 from tensorflow.keras import models as KM
-from tensorflow.keras.engine import saving
+from tensorflow.python.keras.engine import saving
 
 from mrcnn import utils
 
