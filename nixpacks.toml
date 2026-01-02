@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['python38', 'python38Packages.pip', 'stdenv.cc.cc.lib']
+nixPkgs = ['python38', 'python38Packages.pip', 'gcc']
 
 [phases.install]
 cmds = [
@@ -13,4 +13,4 @@ cmds = [
 cmds = []
 
 [start]
-cmd = 'export LD_LIBRARY_PATH=$(find /nix/store -name libstdc++.so.6 -exec dirname {} \; | head -n 1):$LD_LIBRARY_PATH && /opt/venv/bin/python application.py'
+cmd = '/opt/venv/bin/python application.py'
