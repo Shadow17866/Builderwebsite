@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+workingDir = "FloorPlanTo3D-API-master"
+startCommand = "python application.py"
