@@ -100,30 +100,31 @@ class PredictionConfig(Config):
 	NAME = "floorPlan_cfg"
 	# number of classes (background + door + wall + window)
 	NUM_CLASSES = 1 + 3
-	# simplify GPU config
+	# Minimize GPU/memory usage
 	GPU_COUNT = 1
 	IMAGES_PER_GPU = 1
 	
+	# Reduce memory footprint
+	BACKBONE = "resnet50"  # Smaller than resnet101
+	
 	# Balanced detection settings
-	DETECTION_MIN_CONFIDENCE = 0.7  # Back to reasonable threshold
+	DETECTION_MIN_CONFIDENCE = 0.7
+	DETECTION_MAX_INSTANCES = 50  # Reduced from 100
 	
-	# Standard detections
-	DETECTION_MAX_INSTANCES = 100
-	
-	# Standard proposal settings
-	POST_NMS_ROIS_TRAINING = 2000
-	POST_NMS_ROIS_INFERENCE = 1000
+	# Reduce proposal settings to save memory
+	POST_NMS_ROIS_TRAINING = 1000  # Reduced from 2000
+	POST_NMS_ROIS_INFERENCE = 500  # Reduced from 1000
 	RPN_NMS_THRESHOLD = 0.7
 	DETECTION_NMS_THRESHOLD = 0.3
 	
-	# Standard resolution
-	IMAGE_MIN_DIM = 800
-	IMAGE_MAX_DIM = 1024
+	# Reduce image resolution to save memory
+	IMAGE_MIN_DIM = 512  # Reduced from 800
+	IMAGE_MAX_DIM = 768  # Reduced from 1024
 	IMAGE_RESIZE_MODE = "square"
 	
 	# Standard RPN settings
 	RPN_ANCHOR_SCALES = (32, 64, 128, 256, 512)
-	TRAIN_ROIS_PER_IMAGE = 200
+	TRAIN_ROIS_PER_IMAGE = 100  # Reduced from 200
 
 # Initialize model on startup
 def load_model():
