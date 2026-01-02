@@ -14,3 +14,6 @@ cmds = []
 
 [start]
 cmd = '/opt/venv/bin/python application.py'
+
+[variables]
+LD_LIBRARY_PATH = '/nix/store/*-gcc-*-lib/lib:'
