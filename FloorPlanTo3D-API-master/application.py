@@ -38,7 +38,7 @@ import tensorflow as tf
 import sys
 
 from PIL import Image
-import urllib.request
+import gdown
 
 
 
@@ -55,7 +55,7 @@ sys.path.append(ROOT_DIR)
 
 MODEL_NAME = "mask_rcnn_hq"
 WEIGHTS_FILE_NAME = 'maskrcnn_15_epochs.h5'
-WEIGHTS_DOWNLOAD_URL = 'https://drive.google.com/uc?export=download&id=1R7J_6N1_m3rBrHBVYrGQUJ2y-dCYVqQl'
+WEIGHTS_GOOGLE_DRIVE_ID = '1R7J_6N1_m3rBrHBVYrGQUJ2y-dCYVqQl'
 
 def download_weights():
 	"""Download model weights from Google Drive if not present"""
@@ -69,7 +69,8 @@ def download_weights():
 	os.makedirs(WEIGHTS_FOLDER, exist_ok=True)
 	
 	try:
-		urllib.request.urlretrieve(WEIGHTS_DOWNLOAD_URL, weights_path)
+		url = f'https://drive.google.com/uc?id={WEIGHTS_GOOGLE_DRIVE_ID}'
+		gdown.download(url, weights_path, quiet=False)
 		print(f"Successfully downloaded weights to {weights_path}")
 		return weights_path
 	except Exception as e:
