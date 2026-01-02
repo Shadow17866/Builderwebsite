@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ['python39', 'pip']
+nixPkgs = ['python39']
 
 [phases.install]
-cmds = ['cd FloorPlanTo3D-API-master && pip install --upgrade pip && pip install -r requirements.txt']
+cmds = ['cd FloorPlanTo3D-API-master && python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt']
 
 [phases.build]
 cmds = []
 
 [start]
-cmd = 'cd FloorPlanTo3D-API-master && python application.py'
+cmd = 'cd FloorPlanTo3D-API-master && python3 application.py'
