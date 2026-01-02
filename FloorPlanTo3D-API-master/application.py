@@ -38,7 +38,7 @@ import tensorflow as tf
 import sys
 
 from PIL import Image
-import gdown
+import requests
 
 
 
@@ -69,8 +69,16 @@ def download_weights():
 	os.makedirs(WEIGHTS_FOLDER, exist_ok=True)
 	
 	try:
-		# Download using gdown (works well with direct URLs too)
-		gdown.download(WEIGHTS_URL, weights_path, quiet=False)
+		# Download using requests with streaming for large files
+		response = requests.get(WEIGHTS_URL, stream=True)
+		response.raise_for_status()
+		
+		total_size = int(response.headers.get('content-length', 0))
+		print(f"Downloading {total_size / (1024*1024):.1f} MB...")
+		
+		with open(weights_path, 'wb') as f:
+			for chunk in response.iter_content(chunk_size=8192):
+				f.write(chunk)
 		
 		# Verify download
 		if os.path.exists(weights_path) and os.path.getsize(weights_path) > 100000000:  # >100MB
