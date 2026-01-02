@@ -1,0 +1,426 @@
+/* ======================================================
+   ROOT
+====================================================== */
+
+.app-root{
+  margin:0 auto;
+  color:white;
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero{
+  margin-bottom:1.25rem;
+  text-align:center;
+}
+
+.hero-badge{
+  display:inline-block;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  color:#021024;
+  font-weight:600;
+  box-shadow:0 6px 20px rgba(11,22,50,0.35);
+  /* animations removed */
+}
+
+.hero-title{
+  font-size:1.9rem;
+  margin:.75rem 0;
+}
+
+.hero-sub{
+  color:var(--muted);
+  max-width:70ch;
+  margin:0 auto;
+}
+
+/* ======================================================
+   GRID & PANELS
+====================================================== */
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:1.25rem;
+  align-items:start;
+}
+
+.panel{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius:14px;
+  padding:1.25rem;
+  backdrop-filter: blur(8px) saturate(120%);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 8px 40px rgba(0,0,0,0.65);
+}
+
+/* ======================================================
+   STEPS
+====================================================== */
+
+.steps{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:.9rem;
+}
+
+.steps li{
+  display:flex;
+  gap:.8rem;
+  align-items:flex-start;
+}
+
+.step-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:linear-gradient(180deg,var(--accent-1),var(--accent-2));
+  box-shadow:0 6px 12px rgba(66,40,255,0.35);
+}
+
+/* ======================================================
+   UPLOADER
+====================================================== */
+
+.uploader{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.6rem;
+  padding:1.1rem;
+  border-radius:14px;
+  border:1px dashed rgba(255,255,255,0.18);
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.uploader:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 50px rgba(0,0,0,0.6);
+}
+
+.uploader.hover{
+  border-color:rgba(255,255,255,0.35);
+}
+
+.uploader-icon{
+  width:80px;
+  height:80px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.15);
+  color:var(--accent-2);
+}
+
+.uploader-text{
+  text-align:center;
+}
+
+.uploader-text strong{
+  display:block;
+}
+
+.uploader-text span{
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+/* ======================================================
+   FILE PREVIEW
+====================================================== */
+
+.preview{
+  margin-top:1rem;
+  padding-top:1rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.preview h3{
+  margin:.25rem 0;
+}
+
+.file-item{
+  display:flex;
+  justify-content:space-between;
+  padding:.45rem .6rem;
+  border-radius:8px;
+  margin-bottom:.5rem;
+  background:rgba(255,255,255,0.06);
+}
+
+.file-size{
+  color:var(--muted);
+}
+
+/* ======================================================
+   ACTIONS
+====================================================== */
+
+.actions{
+  display:flex;
+  gap:.6rem;
+  margin-top:1rem;
+}
+
+.primary{
+  padding:.6rem 1rem;
+  border-radius:10px;
+  border:0;
+  background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  color:#021024;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.ghost{
+  padding:.6rem 1rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:transparent;
+  color:var(--muted);
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+.footer{
+  margin-top:1.25rem;
+  color:var(--muted);
+  font-size:.95rem;
+  text-align:center;
+}
+
+/* ======================================================
+   DEMO MODAL (KEY FIXES)
+====================================================== */
+
+.demo-modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(6,9,20,0.78);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  z-index:1200;
+}
+
+/* ---- DEMO PANEL ---- */
+
+.demo-panel{
+  position:relative;
+  overflow:hidden;
+  width:920px;
+  max-width:94%;
+  padding:1.3rem 1.4rem;
+  border-radius:20px;
+
+  background:
+    radial-gradient(120% 120% at 20% 0%, rgba(99,102,241,0.12), transparent 45%),
+    rgba(10,14,26,0.96);
+
+  border:1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 40px 140px rgba(0,0,0,0.9),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.demo-close{
+  position:absolute;
+  right:.8rem;
+  top:.6rem;
+  background:none;
+  border:0;
+  font-size:1.2rem;
+  color:var(--muted);
+  cursor:pointer;
+}
+
+/* ======================================================
+   DEMO CONTENT
+====================================================== */
+
+.demo-stage{
+  display:flex;
+  gap:1.4rem;
+  align-items:center;
+  overflow:visible; /* allow animated elements to be fully visible */
+}
+
+.demo-uploader{
+  width:240px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.8rem;
+}
+
+/* ---- FILE DROP ANIMATION ---- */
+
+.file-anim{
+  width:190px;
+  height:120px;
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  border:1px solid rgba(255,255,255,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.file-anim .file-icon{
+  width:72px;
+  height:54px;
+  border-radius:6px;
+  background:linear-gradient(180deg,var(--accent-1),var(--accent-2));
+  box-shadow:
+    0 18px 45px rgba(123,97,255,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+/* ---- PROGRESS BAR ---- */
+
+.progress{
+  width:240px;
+  height:12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.18);
+  overflow:hidden;
+}
+
+.progress .bar{
+  height:100%;
+  background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+}
+
+/* ======================================================
+   DEMO VIEWS
+====================================================== */
+
+.demo-views{
+  flex:1;
+  display:flex;
+  gap:1.4rem;
+  align-items:center;
+  justify-content:center;
+  transform:scale(1.06);
+}
+
+/* image crossfade for demo modal */
+.demo-image{width:420px;height:260px;border-radius:12px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+.demo-image .img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+.demo-image .img.active{opacity:1}
+
+/* ---- 2D PLAN ---- */
+
+.plan-2d{
+  width:320px;
+  height:200px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.floor-svg{
+  width:88%;
+  height:88%;
+}
+
+.floor-svg rect,
+.floor-svg line{
+  fill:rgba(255,255,255,0.16);
+  stroke:rgba(255,255,255,0.75);
+}
+
+/* ---- 3D MODEL ---- */
+
+.model-3d{
+  width:360px;
+  height:240px;
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1000px;
+}
+
+.model-3d .block{
+  position:absolute;
+  width:130px;
+  height:86px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.32), rgba(255,255,255,0.12));
+  border:1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 45px 110px rgba(0,0,0,0.88),
+    inset 0 0 0 1px rgba(255,255,255,0.18);
+  opacity:1;
+  transform-origin:center bottom;
+}
+
+.model-3d .b1{left:12%;bottom:8%}
+.model-3d .b2{left:42%;bottom:8%}
+.model-3d .b3{left:72%;bottom:8%}
+
+.model-3d.extruded .block{
+  opacity:1;
+  transform:translateZ(68px) translateY(-12px) rotateX(18deg);
+}
+
+.model-3d.rotated{
+  transform:rotateX(16deg) rotateY(20deg) scale(.97);
+}
+
+/* ======================================================
+   CAPTION
+====================================================== */
+
+.demo-caption{
+  margin-top:.8rem;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width:980px){
+  .grid{grid-template-columns:1fr}
+}
+
+@media (max-width:720px){
+  .demo-stage{flex-direction:column}
+  .demo-views{transform:none}
+  .model-3d{width:100%}
+}
+
+/* ======================================================
+   ANIMATIONS
+====================================================== */
+
+/* animations removed */

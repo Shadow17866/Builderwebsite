@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: floorplan-api
+    env: python
+    runtime: python-3.7.9
+    buildCommand: pip install -r requirements.txt
+    startCommand: python application.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.7.9
+      - key: PORT
+        value: 5000
+    plan: free
