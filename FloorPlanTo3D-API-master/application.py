@@ -55,30 +55,29 @@ sys.path.append(ROOT_DIR)
 
 MODEL_NAME = "mask_rcnn_hq"
 WEIGHTS_FILE_NAME = 'maskrcnn_15_epochs.h5'
-WEIGHTS_GOOGLE_DRIVE_ID = '1R7J_6N1_m3rBrHBVYrGQUJ2y-dCYVqQl'
+WEIGHTS_URL = 'https://huggingface.co/mandeepaws2/weightfile/resolve/main/maskrcnn_15_epochs.h5'
 
 def download_weights():
-	"""Download model weights from Google Drive if not present"""
+	"""Download model weights from Hugging Face if not present"""
 	weights_path = os.path.join(WEIGHTS_FOLDER, WEIGHTS_FILE_NAME)
 	
 	if os.path.exists(weights_path):
 		print(f"Weights file already exists at {weights_path}")
 		return weights_path
 	
-	print(f"Downloading weights from Google Drive...")
+	print(f"Downloading weights from Hugging Face...")
 	os.makedirs(WEIGHTS_FOLDER, exist_ok=True)
 	
 	try:
-		# Use direct Google Drive URL with fuzzy matching
-		url = f'https://drive.google.com/file/d/{WEIGHTS_GOOGLE_DRIVE_ID}/view'
-		gdown.download(url, weights_path, quiet=False, fuzzy=True)
+		# Download using gdown (works well with direct URLs too)
+		gdown.download(WEIGHTS_URL, weights_path, quiet=False)
 		
-		# Verify file was downloaded and is valid
-		if not os.path.exists(weights_path) or os.path.getsize(weights_path) < 1000000:
-			raise Exception("Download failed or file is too small")
-			
-		print(f"Successfully downloaded weights to {weights_path}")
-		return weights_path
+		# Verify download
+		if os.path.exists(weights_path) and os.path.getsize(weights_path) > 100000000:  # >100MB
+			print(f"Successfully downloaded weights ({os.path.getsize(weights_path)} bytes)")
+			return weights_path
+		else:
+			raise Exception("Download incomplete or file too small")
 	except Exception as e:
 		print(f"Error downloading weights: {e}")
 		raise
