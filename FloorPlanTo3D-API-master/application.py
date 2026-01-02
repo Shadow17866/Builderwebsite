@@ -26,7 +26,7 @@ from mrcnn.utils import extract_bboxes
 from numpy import expand_dims
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle
-from keras.backend import clear_session
+from tensorflow.keras.backend import clear_session
 import json
 from flask import Flask, flash, request,jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
