@@ -13,7 +13,4 @@ cmds = [
 cmds = []
 
 [start]
-cmd = '/opt/venv/bin/python application.py'
-
-[variables]
-LD_LIBRARY_PATH = '/nix/store/*-gcc-*-lib/lib:'
+cmd = 'export LD_LIBRARY_PATH=$(find /nix/store -name libstdc++.so.6 -exec dirname {} \; | head -n 1):$LD_LIBRARY_PATH && /opt/venv/bin/python application.py'
