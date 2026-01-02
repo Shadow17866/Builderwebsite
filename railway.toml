@@ -2,8 +2,4 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "/opt/venv/bin/python application.py"
-
-[[deploy.environmentVariables]]
-name = "LD_LIBRARY_PATH"
-value = "/nix/var/nix/profiles/default/lib"
+startCommand = "./start.sh"
